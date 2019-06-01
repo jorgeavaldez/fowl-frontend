@@ -1,13 +1,18 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import {Box, Button, Heading, Grommet} from 'grommet';
-import {Home, Login} from 'grommet-icons';
+import {DropButton, Box, Button, Heading, Grommet} from 'grommet';
+import {Home, Login, Group} from 'grommet-icons';
 import AppBar from './components/AppBar';
 
 import IndexPage from './pages/Index';
 import DraftPage from './pages/Login';
 import RegisterPage from './pages/Register';
 import DashboardPage from './pages/Dashboard';
+import MyTeamPage from './pages/Team';
+import ScoreboardPage from './pages/Scoreboard';
+import MatchPage from './pages/Match';
+import AddPage from './pages/Add';
+
 
 const theme = {
     global: {
@@ -29,6 +34,10 @@ const Routes = () => {
             <Route path="/Login" exact component={DraftPage}/>
             <Route path="/Register" exact component={RegisterPage}/>
             <Route path="/Dashboard" exact component={DashboardPage}/>
+            <Route path="/MyTeam" exact component={MyTeamPage}/>
+            <Route path="/Scoreboard" exact component={ScoreboardPage}/>
+            <Route path="/Match" exact component={MatchPage}/>
+            <Route path="/Add" exact component={AddPage}/>
         </React.Fragment>
     );
 };
@@ -42,6 +51,24 @@ const Nav = () => {
             <Link pad="small" to="/login">
                 <Button icon={< Login />}></Button>
             </Link>
+            <DropButton
+                icon={< Group />}
+                dropAlign={{
+                top: 'bottom',
+                right: 'right'
+                }}
+                dropContent={<Box pad='small' background = "light-2" > 
+                  <Link pad={{
+                        top: 'small'
+                    }}  to = "/MyTeam" > My Team </Link> 
+                  <Link pad={{
+                        top: 'small'
+                    }} to="/Scoreboard"> Scoreboard </Link> 
+                     <Link pad={{
+                        top: 'small'
+                    }} to="/Match"> My Current Match </Link> 
+                  </Box>}
+            />
         </Box>
     );
 };

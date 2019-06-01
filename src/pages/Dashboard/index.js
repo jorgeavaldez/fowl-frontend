@@ -3,6 +3,7 @@ import {Box, Heading} from 'grommet';
 
 import RecentActivityTable from '../../components/RecentActivityTable';
 import Carousel from "../../components/HistoryCarousel";
+import Scoreboard from "../../components/Scoreboard.js";
 
 export default() => {
     return (
@@ -13,11 +14,17 @@ export default() => {
             horizontal: 'hidden'
         }}>
             <Box flex align='center' justify='center'>
-                <Carousel/>
-                <Heading tag="H2">
-                    Recent Matches
-                </Heading>
-                <RecentActivityTable/>
+                <Box>
+                    <Carousel/>
+                </Box>
+                <Box>
+                    <Heading tag="H2">
+                        Recent Matches
+                    </Heading>
+                </Box>
+                <Box>
+                    <RecentActivityTable/>
+                </Box>
             </Box>
 
             <Box
@@ -26,7 +33,7 @@ export default() => {
                 elevation='small'
                 align='center'
                 justify='center'>
-                sidebar
+                <Scoreboard/>
             </Box>
         </Box>
     );

@@ -1,9 +1,12 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {Form, FormField, Button} from 'grommet';
+import {Box, Form, FormField, Button} from 'grommet';
 
 export default() => {
     return (
+      <Box pad={{
+        "horizontal": "xlarge"
+      }} margin="xlarge">
         <Form>
             <FormField name="username" label="User Name"/>
             <FormField name="password" label="Password"/>
@@ -12,5 +15,6 @@ export default() => {
               <Link to="/Register"><Button type="submit" primary label="Register"></Button></Link>
             </div>
         </Form>
+      </Box>
     );
 };
