@@ -16,7 +16,7 @@ export default() => {
             <Carousel fill>
                 <Box className="present">
                     <Box align="center" alignContent="center">
-                        <Heading tag="h2">
+                        <Heading level="3">
                             Current Match
                         </Heading>
                     </Box>
@@ -41,7 +41,7 @@ export default() => {
                 </Box>
                 <Box className="next">
                     <Box align="center" alignContent="center">
-                        <Heading tag="h2">
+                        <Heading level="3">
                             Next Match
                         </Heading>
                     </Box>
@@ -62,7 +62,7 @@ export default() => {
                 </Box>
                 <Box className="past">
                     <Box align="center" alignContent="center">
-                        <Heading tag="h2">
+                        <Heading level="3">
                             Past Match
                         </Heading>
                     </Box>
@@ -79,11 +79,12 @@ export default() => {
                             </TableRow>
                         </TableBody>
                     </Table>
-                    <Box margin={{
+                    <Box
+                        margin={{
                         top: 'large',
                         bottom: 'large'
                     }}>
-                        <Button type="submit" className="btn" primary label="Watch Highlights"/>
+                        <Button type="submit" primary label="Watch Highlights"/>
                     </Box>
                 </Box>
             </Carousel>

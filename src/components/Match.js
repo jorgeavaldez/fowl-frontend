@@ -22,20 +22,20 @@ export default() => {
 
     return (
         <Box>
-            <Box flex direction="row">
-                <Box flex direction="row" alignContent="around">
-                    <Heading tag="h5">
+            <Box direction="row" margin="none">
+                <Box direction="row" align="center" justify="between" width="100%" pad={{horizontal:"small"}}>
+                    <Heading>
                         Team 1
                     </Heading>
-                    <Heading tag="h6" align="end">
+                    <Heading>
                         58
                     </Heading>
                 </Box>
-                <Box flex direction="row" alignContent="around">
-                    <Heading tag="h5">
+                <Box direction="row" align="center" justify="between" width="100%" pad={{horizontal:"small"}}>
+                    <Heading>
                         Team 2
                     </Heading>
-                    <Heading tag="h6" align="end">
+                    <Heading>
                         60
                     </Heading>
                 </Box>

@@ -5,27 +5,34 @@ import {Link} from "react-router-dom";
 import TeamTable from "../../components/TeamTable";
 
 export default() => {
-
     return (
-        <Box direction='row' flex margin={{
-            left: 'xlarge'
-        }}>
-            <Box>
-                <Box flex align='center' justify='center'>
-                    <TeamTable/>
-                </Box>
-            </Box>
-            <Box flex>
-                <Box
-                    direction="row"
-                    fill={false}
-                    margin={{
-                    top: 'xlarge'
+        <Box>
+            <Box
+                direction="row"
+                width="100vw"
+                justify="end"
+                pad={{
+                top: 'medium',
+                right: "xlarge"
+            }}>
+                <Box margin={{
+                    right: "medium"
                 }}>
-                    <Link pad="small" to="/Add">
-                        <Button label="Add New Player"/>
+                    <Link to="/Add">
+                        <Button primary label="Add New Player"/>
                     </Link>
-                    <Button label="Drop Player" onClick={() => {}}/>
+                </Box>
+                <Button label="Drop Player" primary/>
+            </Box>
+            <Box
+                flex
+                justify="center"
+                align="center"
+                pad={{
+                bottom: 'medium'
+            }}>
+                <Box>
+                    <TeamTable/>
                 </Box>
             </Box>
         </Box>

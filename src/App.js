@@ -5,13 +5,14 @@ import {Home, Login, Group} from 'grommet-icons';
 import AppBar from './components/AppBar';
 
 import IndexPage from './pages/Index';
-import DraftPage from './pages/Login';
+import LoginPage from './pages/Login';
 import RegisterPage from './pages/Register';
 import DashboardPage from './pages/Dashboard';
 import MyTeamPage from './pages/Team';
 import ScoreboardPage from './pages/Scoreboard';
 import MatchPage from './pages/Match';
 import AddPage from './pages/Add';
+import DraftPage from './pages/Draft';
 
 
 const theme = {
@@ -31,13 +32,14 @@ const Routes = () => {
     return (
         <React.Fragment>
             <Route path="/" exact component={IndexPage}/>
-            <Route path="/Login" exact component={DraftPage}/>
+            <Route path="/Login" exact component={LoginPage}/>
             <Route path="/Register" exact component={RegisterPage}/>
             <Route path="/Dashboard" exact component={DashboardPage}/>
             <Route path="/MyTeam" exact component={MyTeamPage}/>
             <Route path="/Scoreboard" exact component={ScoreboardPage}/>
             <Route path="/Match" exact component={MatchPage}/>
             <Route path="/Add" exact component={AddPage}/>
+            <Route path="/Draft" exact component={DraftPage}/>
         </React.Fragment>
     );
 };
@@ -60,6 +62,9 @@ const Nav = () => {
                 dropContent={<Box pad='small' background = "light-2" > 
                   <Link pad={{
                         top: 'small'
+                    }}  to = "/Dashboard" > My Dashboard </Link> 
+                  <Link pad={{
+                        top: 'small'
                     }}  to = "/MyTeam" > My Team </Link> 
                   <Link pad={{
                         top: 'small'
@@ -76,7 +81,7 @@ const Nav = () => {
 function App() {
     return (
         <Grommet theme={theme} full>
-            <Box fill>
+            <Box fill basis="xlarge">
                 <Router>
                     <AppBar>
                         <Heading level='3' margin='none'>My App</Heading>

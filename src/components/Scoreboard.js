@@ -11,7 +11,7 @@ import {
 export default(props) => (
     <Box>
         <Box align="center" alignContent="center">
-            <Heading tag="h5">
+            <Heading>
                 Scoreboard
             </Heading>
         </Box>
