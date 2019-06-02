@@ -88,7 +88,7 @@ function App() {
         <Grommet align="center" justify="center" theme={theme} full>
             <Box fill basis="auto">
                 <Router>
-                    <AppBar style={{"min-height": "40px"}}>
+                    <AppBar style={{"minHeight": "40px"}}>
                             <Image align="left"  pad={{top:"medium"}} style={{ maxWidth: '3rem', maxHeight: '3rem', top:'0'}} src={Fowl} />
                         <Nav/>
                     </AppBar>

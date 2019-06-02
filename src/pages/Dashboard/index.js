@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Heading, Button } from 'grommet';
 import { Link } from "react-router-dom";
 
-import RecentActivityTable from '../../components/RecentActivityTable';
+import TopTeamsTable from '../../components/TopTeamsTable';
 import Carousel from "../../components/HistoryCarousel";
 import Scoreboard from "../../components/Scoreboard.js";
 
@@ -59,13 +59,13 @@ export default () => {
           margin={{ vertical: '6rem', bottom: '8rem'}}
         >
           <Heading level="3">
-            Recent Matches
+            Top Teams
           </Heading>
 
           <Box
             margin={{ bottom: 'medium'}}
           >
-            <RecentActivityTable />
+            <TopTeamsTable />
           </Box>
           
         </Box>
