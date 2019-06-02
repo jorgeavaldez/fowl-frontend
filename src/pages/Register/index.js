@@ -1,20 +1,45 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {Form, FormField, Button} from 'grommet';
+import {Box, Form, FormField, Button, Heading} from 'grommet';
 
 export default() => {
     return (
-        <Form>
-            <FormField name="firstName" label="First Name"/>
-            <FormField name="lastName" label="Last Name"/>
-            <FormField name="username" label="User Name"/>
-            <FormField name="password" label="Password"/>
-            <i Maybe add favorite team icon and chose a color for some customization/>
-            <div className="row">
-              <Link to="/Dashboard"><Button type="submit" primary label="Submit"/></Link>
-              <p>Already have an account?</p>
-              <Link to="/Login"><Button type="submit" primary label="Login"></Button></Link>
-            </div>
-        </Form>
+        <Box
+            pad={{
+            horizontal: "xlarge",
+            top: "medium"
+        }}>
+            <Form>
+                <FormField name="username" label="Username/ Display Name"/>
+                <FormField name="email" label="Email Address"/>
+                <FormField name="password" label="Password"/>
+                <FormField name="confirmPassword" label="Confirm Password"/>
+                <Box
+                    direction="row"
+                    align="center"
+                    pad={{
+                    top: "small"
+                }}>
+                    <Box margin={{
+                        right: "medium"
+                    }}>
+                        <Link to="/Dashboard"><Button type="submit" primary label="Submit"/></Link>
+                    </Box>
+                    <Box direction="row" align="center">
+                        <Heading level="6">
+                            Already have an account?
+                        </Heading>
+                        <Box
+                            margin={{
+                            left: "small"
+                        }}>
+                            <Link to="/Register">
+                                <Button type="submit" primary label="Log in"></Button>
+                            </Link>
+                        </Box>
+                    </Box>
+                </Box>
+            </Form>
+        </Box>
     );
 };
