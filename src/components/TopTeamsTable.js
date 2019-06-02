@@ -36,6 +36,7 @@ export default() => {
             console.dir(currentTeam);
 
             const teamProps = {
+                key: i,
                 name: currentTeam.competitor.name,
                 logo: currentTeam.competitor.logo,
                 placement: currentTeam.placement,
@@ -44,7 +45,7 @@ export default() => {
             };
 
             teams.push(
-                <TableRow>
+                <TableRow key={i}>
                 <TeamRow {...teamProps}
                 />
               </TableRow>

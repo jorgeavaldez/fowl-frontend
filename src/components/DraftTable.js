@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Table, TableRow, TableCell, TableBody, TableHeader} from 'grommet';
 
-import PlayerRow from '../components/PlayerRow';
+import DraftRow from '../components/DraftRow';
 
 import axios from 'axios';
 
@@ -83,7 +83,7 @@ export default(props) => {
 
             players.push(
               <TableRow key={i} onClick={onClick} style={rowStyles}>
-                <PlayerRow {...playerProps}
+                <DraftRow {...playerProps}
                 />
               </TableRow>
             );
@@ -122,9 +122,6 @@ export default(props) => {
                     </TableCell>
                     <TableCell scope="col" border="bottom">
                         Rank
-                    </TableCell>
-                    <TableCell scope="col" border="bottom">
-                        Total Points
                     </TableCell>
                 </TableRow>
             </TableHeader>

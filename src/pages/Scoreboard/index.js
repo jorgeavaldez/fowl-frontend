@@ -1,22 +1,63 @@
-import React from 'react';
+import React,  { useState, useEffect }  from 'react';
 import {Table, TableRow, Box, TableBody, Heading} from 'grommet';
 
-import TeamScore from '../../components/TeamScore';
+import ScoreboardRow from "../../components/ScoreboardRow"
+
+import axios from 'axios';
+
+const myApi = axios.create({
+    baseURL: 'https://api.overwatchleague.com',
+    timeout: 10000,
+    transformRequest: [(data) => JSON.stringify(data)],
+    headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+    }
+});
 
 export default() => {
-    const players = [];
     const rows = [];
+    const [rankingData, setRankingData] = useState(null);
 
-    for (let i = 0; i < 10; i++) {
-        players.push(<TeamScore/>);
+    useEffect(() => {
+        myApi.get('/ranking').then((response) => {
+            console.dir(response);
+            if (response.status === 200) {
+                return setRankingData(response.data.content);
+            }
+        });
+    }, []);
+
+
+    const teams = [];
+
+    if (rankingData) {
+        for (let i = 0; i < 10; i++) {
+            const currentTeam = rankingData[i];
+
+            console.dir(currentTeam);
+
+            const teamProps = {
+                key: i,
+                name: currentTeam.competitor.name,
+                logo: currentTeam.competitor.logo,
+                placement: currentTeam.placement,
+                matchWin: currentTeam.records[0].matchWin,
+                matchLoss: currentTeam.records[0].matchLoss
+            };
+
+            teams.push(    
+                <ScoreboardRow {...teamProps}
+                />
+            ); 
+        }
     }
 
-    for (let j = 0; j < players.length - 1; j += 2) {
+    for (let j = 0; j < teams.length - 1; j += 2) {
         rows.push(
             <TableRow>
-                {players[j]}
-                <Box flex direction="row-reverse" align="center" justify="center">
-                    {players[j + 1]}
+                {teams[j]}
+                <Box flex direction="row-reverse" align="center">
+                    {teams[j + 1]}
                 </Box>
             </TableRow>
         );

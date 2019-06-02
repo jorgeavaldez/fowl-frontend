@@ -15,14 +15,15 @@ const myApi = axios.create({
 });
 
 export default(props) => {
-    const { setPlayerToAdd } = props;
+    const { newPlayer } = props;
+    const { removePlayer } = props;
+
 
     const [playerData, setPlayerData] = useState(null);
     const [selectedRow, setSelectedRow] = useState(null);
 
     useEffect(() => {
         myApi.get('/players?expand=stats').then((response) => {
-            console.dir(response);
             if (response.status === 200) {
                 return setPlayerData(response.data);
             }
@@ -33,7 +34,7 @@ export default(props) => {
     const players = [];
 
     if (playerData) {
-        for (let i = 0; i < playerData.length; i++) {
+        for (let i = 101; i < 111; i++) {
             const currentPlayer = playerData[i];
 
             console.dir(currentPlayer);
@@ -41,7 +42,6 @@ export default(props) => {
                 evt.preventDefault();
                 console.log('here');
                 setSelectedRow(i);
-                setPlayerToAdd(currentPlayer);
             }
 
             const playerProps = {
@@ -89,6 +89,70 @@ export default(props) => {
             );
         }
     }
+
+    if (newPlayer || removePlayer) {
+      var currentPlayer = {};
+      if(newPlayer){
+        currentPlayer = newPlayer;
+      }else{
+        currentPlayer = removePlayer;
+      }
+
+      console.dir(currentPlayer);
+      const onClick = (evt) => {
+          evt.preventDefault();
+          setSelectedRow(players.length);
+      }
+
+      const playerProps = {
+          key: players.length,
+          name: `${currentPlayer.givenName} ${currentPlayer.familyName}`,
+          playerName: currentPlayer.name,
+          role: currentPlayer.attributes.role.toUpperCase(),
+          rank:'-',
+          totalPoints: '-',
+      };
+
+      if(currentPlayer.headshot){
+          playerProps.pic = currentPlayer.headshot;
+      }
+      else{
+          playerProps.pic = "";
+      }
+
+      if (currentPlayer.stats) {
+          playerProps.damage = currentPlayer.stats.stats[2].value.toFixed(2);;
+          playerProps.healing = currentPlayer.stats.stats[3].value.toFixed(2);;
+          playerProps.finalBlows= currentPlayer.stats.stats[5].value.toFixed(2);;
+          playerProps.eliminations= currentPlayer.stats.stats[0].value.toFixed(2);;
+          playerProps.deaths= currentPlayer.stats.stats[1].value.toFixed(2);;
+      }
+
+      else {  
+          playerProps.damage = '-';
+          playerProps.healing = '-';
+          playerProps.finalBlows= '-';
+          playerProps.eliminations= '-';
+          playerProps.deaths= '-';
+      }
+      
+      if(newPlayer){
+      players.push(
+        <TableRow key={players.length} onClick={onClick}>
+          <PlayerRow {...playerProps}
+          />
+        </TableRow>
+      );
+    } else {
+      players.delete(
+        <TableRow key={players.length} onClick={onClick}>
+          <PlayerRow {...playerProps}
+          />
+        </TableRow>
+      );
+    }
+    }
+
     return (
         <Table>
             <TableHeader>

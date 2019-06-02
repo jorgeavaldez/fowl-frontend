@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import {Box, Button} from 'grommet';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
-import TeamTable from "../../components/TeamTable";
+import MyTeamTable from "../../components/MyTeamTable";
 
-export default() => {
+export default(props) => {
+    const tableProps = {};
+
+    const [playerToDelete] = useState(null);
+    const [deletePlayerClicked, setDeletePlayerClicked] = useState(null);
+
+    const onClickDeletePlayer = (evt) => {
+        evt.preventDefault();
+        setDeletePlayerClicked(true);
+    };
+
+    if (deletePlayerClicked) {
+        tableProps.removePlayer = props.location.state.playerToDelete;
+        return <Redirect to={{
+            pathname: '/MyTeam',
+            state: {playerToDelete}
+        }} />
+    }
+
+    if (props.location.state && props.location.state.playerToAdd) {
+        tableProps.newPlayer = props.location.state.playerToAdd;
+    }
+
+    // if (props.location.state && props.location.state.deletePlayerClicked) {
+    //     tableProps.removePlayer = props.location.state.playerToDelete;
+    // }
+
     return (
         <Box>
             <Box
@@ -22,7 +48,8 @@ export default() => {
                         <Button primary label="Add New Player"/>
                     </Link>
                 </Box>
-                <Button label="Drop Player" primary/>
+                <Button label="Drop Player"  primary 
+                            onClick={onClickDeletePlayer}/>
             </Box>
             <Box
                 flex
@@ -32,7 +59,7 @@ export default() => {
                 bottom: 'medium'
             }}>
                 <Box>
-                    <TeamTable/>
+                    <MyTeamTable {...tableProps} />
                 </Box>
             </Box>
         </Box>

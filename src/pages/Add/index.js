@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Box, Button} from 'grommet';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 import TeamTable from "../../components/TeamTable";
 
 export default() => {
+    const [playerToAdd, setPlayerToAdd] = useState(null);
+    const [addPlayerClicked, setAddPlayerClicked] = useState(null);
+
+    const onClickAddPlayer = (evt) => {
+        evt.preventDefault();
+        setAddPlayerClicked(true);
+    };
+
+    if (addPlayerClicked) {
+        return <Redirect to={{
+            pathname: '/MyTeam',
+            state: {playerToAdd}
+        }} />
+    }
+
     return (
         <Box>
             <Box
@@ -18,7 +33,11 @@ export default() => {
                     right: "xlarge"
                 }}>
                     <Link to="/Add">
-                        <Button primary label="Add Player"/>
+                        <Button 
+                            primary 
+                            onClick={onClickAddPlayer} 
+                            label="Add Player"
+                        />
                     </Link>
                 </Box>
             </Box>
@@ -30,7 +49,7 @@ export default() => {
                 bottom: 'medium'
             }}>
                 <Box>
-                    <TeamTable/>
+                    <TeamTable setPlayerToAdd={setPlayerToAdd}/>
                 </Box>
             </Box>
         </Box>

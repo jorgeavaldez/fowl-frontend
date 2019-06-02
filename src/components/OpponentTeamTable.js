@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Table, TableRow, TableCell, TableBody, TableHeader} from 'grommet';
 
-import PlayerRow from '../components/PlayerRow';
+import PlayerScore from '../components/PlayerScore';
 
 import axios from 'axios';
 
@@ -15,14 +15,12 @@ const myApi = axios.create({
 });
 
 export default(props) => {
-    const { setPlayerToAdd } = props;
 
     const [playerData, setPlayerData] = useState(null);
     const [selectedRow, setSelectedRow] = useState(null);
 
     useEffect(() => {
         myApi.get('/players?expand=stats').then((response) => {
-            console.dir(response);
             if (response.status === 200) {
                 return setPlayerData(response.data);
             }
@@ -33,7 +31,7 @@ export default(props) => {
     const players = [];
 
     if (playerData) {
-        for (let i = 0; i < playerData.length; i++) {
+        for (let i = 50; i < 60; i++) {
             const currentPlayer = playerData[i];
 
             console.dir(currentPlayer);
@@ -41,7 +39,6 @@ export default(props) => {
                 evt.preventDefault();
                 console.log('here');
                 setSelectedRow(i);
-                setPlayerToAdd(currentPlayer);
             }
 
             const playerProps = {
@@ -59,23 +56,6 @@ export default(props) => {
             else{
                 playerProps.pic = "";
             }
-
-            if (currentPlayer.stats) {
-                playerProps.damage = currentPlayer.stats.stats[2].value.toFixed(2);;
-                playerProps.healing = currentPlayer.stats.stats[3].value.toFixed(2);;
-                playerProps.finalBlows= currentPlayer.stats.stats[5].value.toFixed(2);;
-                playerProps.eliminations= currentPlayer.stats.stats[0].value.toFixed(2);;
-                playerProps.deaths= currentPlayer.stats.stats[1].value.toFixed(2);;
-            }
-
-            else {  
-                playerProps.damage = '-';
-                playerProps.healing = '-';
-                playerProps.finalBlows= '-';
-                playerProps.eliminations= '-';
-                playerProps.deaths= '-';
-            }
-
             const rowStyles = {};
             if (selectedRow === i) {
                 rowStyles.backgroundColor = "#5BAFFF";
@@ -83,12 +63,13 @@ export default(props) => {
 
             players.push(
               <TableRow key={i} onClick={onClick} style={rowStyles}>
-                <PlayerRow {...playerProps}
+                <PlayerScore {...playerProps}
                 />
               </TableRow>
             );
         }
     }
+
     return (
         <Table>
             <TableHeader>
@@ -104,21 +85,6 @@ export default(props) => {
                     </TableCell>
                     <TableCell scope="col" border="bottom">
                         Role
-                    </TableCell>
-                    <TableCell scope="col" border="bottom">
-                        Damage
-                    </TableCell>
-                    <TableCell scope="col" border="bottom">
-                        Healing
-                    </TableCell>
-                    <TableCell scope="col" border="bottom">
-                        Final Blows
-                    </TableCell>
-                    <TableCell scope="col" border="bottom">
-                        Eliminations
-                    </TableCell>
-                    <TableCell scope="col" border="bottom">
-                        Deaths
                     </TableCell>
                     <TableCell scope="col" border="bottom">
                         Rank

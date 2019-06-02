@@ -1,17 +1,15 @@
 import React from 'react';
 import {TableCell} from 'grommet';
 
-
-export default() => {
+export default (props) => {
     return (
         <React.Fragment>
             <TableCell scope="row">
-                <strong>Gi Hyeon Chon</strong>
+                <strong>{props.name}</strong>
             </TableCell>
-            <TableCell>Ado</TableCell>
-            <TableCell>Damage</TableCell>
-            <TableCell>1</TableCell>
-            <TableCell>78</TableCell>
+            <TableCell>{props.playerName}</TableCell>
+            <TableCell>{props.role}</TableCell>
+            <TableCell>{props.rank}</TableCell>
         </React.Fragment>
     );
 };

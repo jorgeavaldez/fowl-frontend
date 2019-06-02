@@ -71,7 +71,7 @@ export default () => {
         </Box>
       </Box>
 
-      <Box width='medium' background='light-2' align='center' justify='center'>
+      <Box width='35rem' background='light-2' align='center' justify='center'>
         <Scoreboard />
       </Box>
     </Box>
