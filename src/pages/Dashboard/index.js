@@ -27,18 +27,18 @@ const DraftCountdown = (props) => {
       </Heading>
 
       <Heading level="6" pad="none" margin="none">
-        Now Drafting
+        Draft has Ended!
       </Heading>
 
-      <Link to="/Draft">
-        <Button
-          type="submit"
-          margin={{
-            "top": "small"
-          }}
-          primary
-          label="Enter Draft!"
-        />
+      <Link to="/MyTeam">
+          <Button
+            type="submit"
+            margin={{
+              "top": "small"
+            }}
+            primary
+            label="Check out your team!"
+          />
       </Link>
     </Box>
   );
