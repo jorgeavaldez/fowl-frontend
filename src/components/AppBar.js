@@ -3,12 +3,13 @@ import { Box } from 'grommet';
 
 export default (props) => (
   <Box
+    tag='header'
     direction='row'
     align='center'
     justify='between'
     background='brand'
     pad={{
-      left: 'small',
+      left: 'medium',
       right: 'small',
       vertical: 'small'
     }}

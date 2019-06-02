@@ -24,7 +24,7 @@ export default() => {
         <Box>
             <Box direction="row" margin="none">
                 <Box direction="row" align="center" justify="between" width="100%" pad={{horizontal:"small"}}>
-                    <Heading>
+                    <Heading color="overwatch">
                         Team 1
                     </Heading>
                     <Heading>
@@ -32,7 +32,7 @@ export default() => {
                     </Heading>
                 </Box>
                 <Box direction="row" align="center" justify="between" width="100%" pad={{horizontal:"small"}}>
-                    <Heading>
+                    <Heading color="overwatch">
                         Team 2
                     </Heading>
                     <Heading>

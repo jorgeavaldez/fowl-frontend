@@ -35,7 +35,7 @@ export default() => {
                 </Box>
             </Box>
             <Box width="100vw" align="center" justify="center" margin={{vertical:"xlarge"}}>
-                <Heading style={{color:"#F19D33"}}>
+                <Heading color="overwatch">
                     Assemble the Greatest Overwatch eSports Team
                 </Heading>
             </Box>

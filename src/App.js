@@ -20,7 +20,10 @@ import DraftPage from './pages/Draft';
 const theme = {
     global: {
         colors: {
-            brand: '#228BE6'
+            brand: '#128CFF',
+            accent_blue: "#5BAFFF",
+            overwatch: '#FF951B',
+            accent_orange: 'FFB460'
         },
         font: {
             family: 'Roboto',
@@ -83,10 +86,10 @@ const Nav = () => {
 function App() {
     return (
         <Grommet align="center" justify="center" theme={theme} full>
-            <Box fill basis="xlarge">
+            <Box fill basis="auto">
                 <Router>
-                    <AppBar style={{height:"10rem"}}>
-                            <Image fit="contain" align="left"  pad={{top:"medium"}} style={{ maxWidth: '3rem', maxHeight: '3rem', top:'0'}} src={Fowl} />
+                    <AppBar>
+                            <Image align="left"  pad={{top:"medium"}} style={{ maxWidth: '3rem', maxHeight: '3rem', top:'0'}} src={Fowl} />
                         <Nav/>
                     </AppBar>
                     <Routes/>

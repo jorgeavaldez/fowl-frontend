@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {Box, Form, FormField, Button, Heading} from 'grommet';
+import {Box, Form, FormField, Button} from 'grommet';
 
 export default() => {
     return (
@@ -26,15 +26,15 @@ export default() => {
                         <Link to="/Dashboard"><Button type="submit" primary label="Submit"/></Link>
                     </Box>
                     <Box direction="row" align="center">
-                        <Heading level="6">
+                        <p>
                             Already have an account?
-                        </Heading>
+                        </p>
                         <Box
                             margin={{
                             left: "small"
                         }}>
                             <Link to="/Register">
-                                <Button type="submit" primary label="Log in"></Button>
+                                <Button type="submit" default label="Log in"></Button>
                             </Link>
                         </Box>
                     </Box>

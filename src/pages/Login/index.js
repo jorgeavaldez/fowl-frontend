@@ -74,7 +74,7 @@ export default() => {
                         <Button type="submit" primary label="Submit"/>
                     </Box>
                     <Link to="/Register">
-                        <Button type="submit" primary label="Register"></Button>
+                        <Button type="submit" default label="Register"></Button>
                     </Link>
                 </Box>
             </Form>
