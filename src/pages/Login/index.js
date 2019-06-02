@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Link, Redirect} from "react-router-dom";
-import {Heading ,Box, Form, FormField, Button} from 'grommet';
+import {Heading, Box, Form, FormField, Button} from 'grommet';
 import axios from 'axios';
 
 export default() => {
@@ -41,6 +41,14 @@ export default() => {
                 return setLoggedIn(true);
             })
             .catch((err) => {
+                if (!err || !err.response || !err.response.data || !err.response.status) {
+                  return setErrors({
+                    errors: {
+                      detail: "Wrong email or password."
+                    }
+                  });
+                }
+
                 const { data, status } = err.response;
                 if (status !== 200) {
                     return setErrors(data);
@@ -55,7 +63,7 @@ export default() => {
     }
 
     else if (errors) {
-        errorMessage = <Heading>{errors.errors.detail}</Heading>
+        errorMessage = <Heading level="6" color="overwatch">*{errors.errors.detail}</Heading>
     }
 
     return (

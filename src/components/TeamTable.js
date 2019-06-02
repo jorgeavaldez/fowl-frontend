@@ -1,24 +1,85 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {Table, TableRow, TableCell, TableBody, TableHeader} from 'grommet';
 
 import PlayerRow from '../components/PlayerRow';
 
+import axios from 'axios';
+
+const myApi = axios.create({
+    baseURL: 'https://api.overwatchleague.com',
+    timeout: 10000,
+    transformRequest: [(data) => JSON.stringify(data)],
+    headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+    }
+});
+
 export default() => {
+    const [playerData, setPlayerData] = useState(null);
+
+    useEffect(() => {
+        myApi.get('/players?expand=stats').then((response) => {
+            console.dir(response);
+            if (response.status === 200) {
+                return setPlayerData(response.data);
+            }
+        });
+    }, []);
+
+
     const players = [];
 
-    for (let i = 0; i < 10; i++) {
-        players.push(
-          <TableRow>
-            <PlayerRow/>
-          </TableRow>
-        );
+    if (playerData) {
+        for (let i = 0; i < playerData.length; i++) {
+            const currentPlayer = playerData[i];
+
+            console.dir(currentPlayer);
+
+            const playerProps = {
+                name: `${currentPlayer.givenName} ${currentPlayer.familyName}`,
+                playerName: currentPlayer.name,
+                role: currentPlayer.attributes.role.toUpperCase(),
+                rank:'-',
+                totalPoints: '-'
+            };
+
+            if(currentPlayer.headshot){
+                playerProps.pic = currentPlayer.headshot;
+            }
+            else{
+                playerProps.pic = "";
+            }
+
+            if (currentPlayer.stats) {
+                playerProps.damage = currentPlayer.stats.stats[2].value.toFixed(2);;
+                playerProps.healing = currentPlayer.stats.stats[3].value.toFixed(2);;
+                playerProps.finalBlows= currentPlayer.stats.stats[5].value.toFixed(2);;
+                playerProps.eliminations= currentPlayer.stats.stats[0].value.toFixed(2);;
+                playerProps.deaths= currentPlayer.stats.stats[1].value.toFixed(2);;
+            }
+
+            else {  
+                playerProps.damage = '-';
+                playerProps.healing = '-';
+                playerProps.finalBlows= '-';
+                playerProps.eliminations= '-';
+                playerProps.deaths= '-';
+            }
+
+            players.push(
+              <TableRow>
+                <PlayerRow {...playerProps}
+                />
+              </TableRow>
+            );
+        }
     }
     return (
         <Table>
             <TableHeader>
                 <TableRow >
                     <TableCell scope="col" border="bottom">
-                        Team
+                        Headshot
                     </TableCell>
                     <TableCell scope="col" border="bottom">
                         Name

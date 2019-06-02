@@ -23,7 +23,7 @@ const theme = {
             brand: '#128CFF',
             accent_blue: "#5BAFFF",
             overwatch: '#FF951B',
-            accent_orange: 'FFB460'
+            accent_orange: '#FFB460'
         },
         font: {
             family: 'Roboto',
@@ -88,7 +88,7 @@ function App() {
         <Grommet align="center" justify="center" theme={theme} full>
             <Box fill basis="auto">
                 <Router>
-                    <AppBar>
+                    <AppBar style={{"min-height": "40px"}}>
                             <Image align="left"  pad={{top:"medium"}} style={{ maxWidth: '3rem', maxHeight: '3rem', top:'0'}} src={Fowl} />
                         <Nav/>
                     </AppBar>

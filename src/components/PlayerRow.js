@@ -3,7 +3,7 @@ import {TableCell, Image, Box} from 'grommet';
 
 import Logo from '../Dallas_Fuel_logo.png';
 
-export default() => {
+export default (props) => {
     return (
         <React.Fragment>
             <TableCell scope="row" background = "light-2" >
@@ -14,21 +14,21 @@ export default() => {
                     "top": "xsmall",
                     "bottom": "xsmall"
                 }}>
-                    <Image fit="contain" src={Logo}/>
+                    <Image fit="contain" src={props.pic}/>
                 </Box>
             </TableCell>
             <TableCell scope="row">
-                <strong>Gi Hyeon Chon</strong>
+                <strong>{props.name}</strong>
             </TableCell>
-            <TableCell>Ado</TableCell>
-            <TableCell>Damage</TableCell>
-            <TableCell>5,160.24</TableCell>
-            <TableCell>7,428.12</TableCell>
-            <TableCell>3.50</TableCell>
-            <TableCell>12.67</TableCell>
-            <TableCell>5.40</TableCell>
-            <TableCell>1</TableCell>
-            <TableCell>78</TableCell>
+            <TableCell>{props.playerName}</TableCell>
+            <TableCell>{props.role}</TableCell>
+            <TableCell>{props.damage}</TableCell>
+            <TableCell>{props.healing}</TableCell>
+            <TableCell>{props.finalBlows}</TableCell>
+            <TableCell>{props.eliminations}</TableCell>
+            <TableCell>{props.deaths}</TableCell>
+            <TableCell>{props.rank}</TableCell>
+            <TableCell>{props.totalPoints}</TableCell>
         </React.Fragment>
     );
 };
