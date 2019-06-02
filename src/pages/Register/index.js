@@ -74,8 +74,8 @@ export default() => {
             <Form onSubmit={onSubmit} onChange={onChange}>
                 <FormField name="username" label="Username/ Display Name"/>
                 <FormField name="email" label="Email Address"/>
-                <FormField name="password" label="Password"/>
-                <FormField name="confirmPassword" label="Confirm Password"/>
+                <FormField name="password" type="password" label="Password"/>
+                <FormField name="confirmPassword" type="password" label="Confirm Password"/>
                 <Box
                     direction="row"
                     align="center"

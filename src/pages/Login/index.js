@@ -74,7 +74,7 @@ export default() => {
             {errors && errorMessage}
             <Form onSubmit={onSubmit} onChange={onChange}>
                 <FormField name="email" label="Email Address"/>
-                <FormField name="password" label="Password"/>
+                <FormField name="password" type="password" label="Password"/>
                 <Box direction="row" pad={{top: "small"}}>
                     <Box margin={{
                         right: "small"
