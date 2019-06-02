@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import {DropButton, Box, Button, Grommet, Image} from 'grommet';
+import {DropButton, Header, Box, Button, Grommet, Image} from 'grommet';
 import {Home, Login, Group} from 'grommet-icons';
 import AppBar from './components/AppBar';
 
@@ -86,7 +86,7 @@ function App() {
             <Box fill basis="xlarge">
                 <Router>
                     <AppBar style={{height:"10rem"}}>
-                    <Image fit="contain"  pad={{top:"medium"}} style={{ maxHeight: '3rem', top:'0'}} src={Fowl} />
+                            <Image fit="contain" align="left"  pad={{top:"medium"}} style={{ maxWidth: '3rem', maxHeight: '3rem', top:'0'}} src={Fowl} />
                         <Nav/>
                     </AppBar>
                     <Routes/>
