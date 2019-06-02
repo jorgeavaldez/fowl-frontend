@@ -6,7 +6,7 @@ import TeamTable from "../../components/TeamTable";
 import DraftOrder from "../../components/DraftOrder";
 import DraftTeam from "../../components/MyDraftTeam";
 
-export default() => {
+export default () => {
     return (
         <Box
             direction='row'
