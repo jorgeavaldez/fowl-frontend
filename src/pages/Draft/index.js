@@ -30,7 +30,7 @@ export default() => {
                         bottom: "medium"
                     }}>
                         <Link to="/Add">
-                            <Button primary label="Add Player"/>
+                            <Button primary label="Draft"/>
                         </Link>
                     </Box>
                 </Box>

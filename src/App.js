@@ -80,7 +80,7 @@ const Nav = () => {
 
 function App() {
     return (
-        <Grommet theme={theme} full>
+        <Grommet align="center" justify="center" theme={theme} full>
             <Box fill basis="xlarge">
                 <Router>
                     <AppBar>
