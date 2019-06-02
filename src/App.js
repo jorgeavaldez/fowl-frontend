@@ -1,8 +1,10 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import {DropButton, Box, Button, Heading, Grommet} from 'grommet';
+import {DropButton, Box, Button, Grommet, Image} from 'grommet';
 import {Home, Login, Group} from 'grommet-icons';
 import AppBar from './components/AppBar';
+
+import Fowl from './fowl.svg'
 
 import IndexPage from './pages/Index';
 import LoginPage from './pages/Login';
@@ -83,8 +85,8 @@ function App() {
         <Grommet align="center" justify="center" theme={theme} full>
             <Box fill basis="xlarge">
                 <Router>
-                    <AppBar>
-                        <Heading level='3' margin='none'>My App</Heading>
+                    <AppBar style={{height:"10rem"}}>
+                    <Image fit="contain"  pad={{top:"medium"}} style={{ maxHeight: '3rem', top:'0'}} src={Fowl} />
                         <Nav/>
                     </AppBar>
                     <Routes/>

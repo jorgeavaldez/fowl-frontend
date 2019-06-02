@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table, TableRow, Box, TableBody} from 'grommet';
+import {Table, TableRow, Box, TableBody, Heading} from 'grommet';
 
 import TeamScore from '../../components/TeamScore';
 
@@ -22,12 +22,19 @@ export default() => {
         );
     }
     return (
-        <Box margin="large" flex align="center" >
-            <Table>
-                <TableBody>
-                    {rows}
-                </TableBody>
-            </Table>
+        <Box>
+            <Box width="100%" align="center" justify="center">
+                <Heading>
+                    Scoreboard
+                </Heading>
+            </Box>
+            <Box margin={{bottom:"large"}} flex align="center">
+                <Table>
+                    <TableBody>
+                        {rows}
+                    </TableBody>
+                </Table>
+            </Box>
         </Box>
     );
 };
